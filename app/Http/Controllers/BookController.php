@@ -38,7 +38,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->successResponse($this->bookService->createBook($request->all(), Response::HTTP_CREATED));
+        return $this->successResponse($this->bookService->createBook($request->all()), Response::HTTP_CREATED);
     }
 
     /**
@@ -53,9 +53,10 @@ class BookController extends Controller
     /**
      * @param Request $request
      * @param $id
+     * @return Response|ResponseFactory
      */
     public function update(Request $request, $id)
     {
-
+        return $this->successResponse($this->bookService->updateBook($request->all(), $id));
     }
 }

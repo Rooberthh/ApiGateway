@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ActivityService;
+use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
 class TimeTableController extends Controller
 {
+    use ApiResponse;
+
+    public $activityService;
+
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param ActivityService $activityService
      */
-    public function __construct()
+    public function __construct(ActivityService $activityService)
     {
-        //
+        $this->activityService = $activityService;
     }
 
     /**

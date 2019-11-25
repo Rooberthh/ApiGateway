@@ -27,11 +27,21 @@
 
         public function createBook($data)
         {
-            return $this->performRequest('POST', '/api/books', $data);
+            return $this->performFileRequest('POST', '/api/books', $data);
+        }
+
+        public function updateBook($data, $book)
+        {
+            return $this->performRequest('PATCH', "/api/books/${book}", $data);
         }
 
         public function deleteBook($book)
         {
             return $this->performRequest('DELETE', "/api/books/{$book}");
+        }
+
+        public function getGenres()
+        {
+            return $this->performRequest('GET', "/api/genres");
         }
     }

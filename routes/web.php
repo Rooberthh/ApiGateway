@@ -18,6 +18,8 @@ $router->get('/', function () use ($router) {
 $router->get('books',  ['uses' => 'BookController@index']);
 $router->post('books',  ['uses' => 'BookController@store']);
 $router->delete('books/{id}',  ['uses' => 'BookController@destroy']);
+$router->patch('books/{id}',  ['uses' => 'BookController@update']);
+$router->get('genres',  ['uses' => 'GenreController@index']);
 
 $router->get('activities',  ['uses' => 'ActivityController@index']);
 $router->post('timetables/{category}/{timetable}/activities',  ['uses' => 'ActivityController@store']);
