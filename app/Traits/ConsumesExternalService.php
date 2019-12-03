@@ -4,6 +4,7 @@
     namespace App\Traits;
 
     use GuzzleHttp\Client;
+    use GuzzleHttp\Exception\GuzzleException;
     use GuzzleHttp\Psr7\UploadedFile;
     use Illuminate\Support\Facades\File;
 
@@ -43,9 +44,10 @@
 
                 $multipart[] = $temp;
             };
+
             $response = $client->request($method, $requestUrl, [
                 'multipart' => $multipart,
-                'headers' => $headers
+                'headers'   => $headers
             ]);
 
             return $response->getBody()->getContents();
