@@ -5,5 +5,8 @@
         ],
         'books' => [
             'base_uri' => env('APP_BOOKS_SERVICE_BASE_URL')
+        ],
+        'calendar' => [
+            'base_uri' => env('APP_CALENDAR_SERVICE_BASE_URL')
         ]
     ];
