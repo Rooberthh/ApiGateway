@@ -33,4 +33,19 @@
             return $this->successResponse($this->calendarService->getEvents());
         }
 
+        public function store()
+        {
+
+        }
+
+        public function update()
+        {
+
+        }
+
+        public function destroy($id)
+        {
+            return $this->successResponse($this->calendarService->deleteEvent($id));
+        }
+
     }

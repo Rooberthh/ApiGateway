@@ -25,4 +25,9 @@
             return $this->performRequest('GET', '/api/events');
         }
 
+        public function deleteEvent($event)
+        {
+            return $this->performRequest('DELETE', "/api/events/{$event}");
+        }
+
     }

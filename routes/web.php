@@ -22,7 +22,10 @@ $router->delete('books/{id}',  ['uses' => 'BookController@destroy']);
 $router->patch('books/{id}',  ['uses' => 'BookController@update']);
 $router->get('genres',  ['uses' => 'GenreController@index']);
 
-$router->get('calendars',  ['uses' => 'CalendarController@index']);
+$router->get('events',  ['uses' => 'CalendarController@index']);
+$router->post('events',  ['uses' => 'CalendarController@store']);
+$router->delete('events/{id}',  ['uses' => 'CalendarController@destroy']);
+$router->patch('events/{id}',  ['uses' => 'CalendarController@update']);
 
 /*
 $router->get('activities',  ['uses' => 'ActivityController@index']);
