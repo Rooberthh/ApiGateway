@@ -38,9 +38,15 @@
 
         }
 
-        public function update()
-        {
 
+        /**
+         * @param Request $request
+         * @param $id
+         * @return Response|ResponseFactory
+         */
+        public function update(Request $request, $id)
+        {
+            return $this->successResponse($this->calendarService->updateEvent($request->all(), $id));
         }
 
         public function destroy($id)

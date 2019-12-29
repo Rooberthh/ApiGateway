@@ -25,6 +25,11 @@
             return $this->performRequest('GET', '/api/events');
         }
 
+        public function updateEvent($data, $event)
+        {
+            return $this->performRequest('PATCH', "/api/events/${event}", $data);
+        }
+
         public function deleteEvent($event)
         {
             return $this->performRequest('DELETE', "/api/events/{$event}");
