@@ -33,9 +33,9 @@
             return $this->successResponse($this->calendarService->getEvents());
         }
 
-        public function store()
+        public function store(Request $request)
         {
-
+            return $this->successResponse($this->calendarService->addEvent($request->all()));
         }
 
 

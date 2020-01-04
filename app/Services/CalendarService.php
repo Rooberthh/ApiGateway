@@ -25,6 +25,11 @@
             return $this->performRequest('GET', '/api/events');
         }
 
+        public function addEvent($data)
+        {
+            return $this->performRequest('POST', "/api/events", $data);
+        }
+
         public function updateEvent($data, $event)
         {
             return $this->performRequest('PATCH', "/api/events/${event}", $data);
@@ -33,6 +38,11 @@
         public function deleteEvent($event)
         {
             return $this->performRequest('DELETE', "/api/events/{$event}");
+        }
+
+        public function getFrequentEvents()
+        {
+            return $this->performRequest('GET', '/api/events/frequent');
         }
 
     }
