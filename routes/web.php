@@ -36,4 +36,5 @@ $router->get('events/frequent',  ['uses' => 'FrequentEventsController@index']);
 /*
     TaskService
 */
-$router->get('tasks',  ['uses' => 'TaskController@index']);
+$router->get('tasks',  ['uses' => 'TasksController@index']);
+$router->post('tasks',  ['uses' => 'TasksController@store']);

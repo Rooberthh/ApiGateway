@@ -9,7 +9,7 @@
     use Illuminate\Http\Response;
     use Laravel\Lumen\Http\ResponseFactory;
 
-    class TaskController extends Controller
+    class TasksController extends Controller
     {
         use ApiResponse;
 
@@ -28,6 +28,15 @@
         public function index()
         {
             return $this->successResponse($this->taskService->getTasks());
+        }
+
+        /**
+         * @param Request $request
+         * @return Response|ResponseFactory
+         */
+        public function store(Request $request)
+        {
+            return $this->successResponse($this->taskService->createTask($request->all()), Response::HTTP_CREATED);
         }
 
     }

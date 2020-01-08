@@ -22,4 +22,9 @@
             return $this->performRequest('GET', '/api/tasks');
         }
 
+        public function createTask($data)
+        {
+            return $this->performRequest('POST', "/api/tasks", $data);
+        }
+
     }
