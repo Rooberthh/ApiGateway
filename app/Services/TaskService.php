@@ -37,4 +37,24 @@
             return $this->performRequest('DELETE', "/api/tasks/{$task}");
         }
 
+        public function getStatuses()
+        {
+            return $this->performRequest('GET', '/api/statuses');
+        }
+
+        public function createStatus($data)
+        {
+            return $this->performRequest('POST', "/api/statuses", $data);
+        }
+
+        public function updateStatus($data, $status)
+        {
+            return $this->performRequest('PATCH', "/api/statuses/${status}", $data);
+        }
+
+        public function deleteStatus($status)
+        {
+            return $this->performRequest('DELETE', "/api/statuses/{$status}");
+        }
+
     }

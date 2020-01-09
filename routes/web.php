@@ -40,3 +40,9 @@ $router->get('tasks',  ['uses' => 'TasksController@index']);
 $router->post('tasks',  ['uses' => 'TasksController@store']);
 $router->patch('tasks/{id}',  ['uses' => 'TasksController@update']);
 $router->delete('tasks/{id}',  ['uses' => 'TasksController@destroy']);
+
+$router->get('statuses',  ['uses' => 'StatusesController@index']);
+$router->post('statuses',  ['uses' => 'StatusesController@store']);
+$router->patch('statuses/{id}',  ['uses' => 'StatusesController@update']);
+$router->delete('statuses/{id}',  ['uses' => 'StatusesController@destroy']);
+
