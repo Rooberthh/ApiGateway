@@ -32,4 +32,9 @@
             return $this->performRequest('PATCH', "/api/tasks/${task}", $data);
         }
 
+        public function deleteTask($task)
+        {
+            return $this->performRequest('DELETE', "/api/tasks/{$task}");
+        }
+
     }

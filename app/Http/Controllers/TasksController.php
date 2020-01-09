@@ -49,4 +49,13 @@
             return $this->successResponse($this->taskService->updateTask($request->all(), $id));
         }
 
+        /**
+         * @param $id
+         * @return Response|ResponseFactory
+         */
+        public function destroy($id)
+        {
+            return $this->successResponse($this->taskService->deleteTask($id));
+        }
+
     }
