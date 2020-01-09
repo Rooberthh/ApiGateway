@@ -38,3 +38,4 @@ $router->get('events/frequent',  ['uses' => 'FrequentEventsController@index']);
 */
 $router->get('tasks',  ['uses' => 'TasksController@index']);
 $router->post('tasks',  ['uses' => 'TasksController@store']);
+$router->patch('tasks/{id}',  ['uses' => 'TasksController@update']);

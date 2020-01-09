@@ -39,4 +39,14 @@
             return $this->successResponse($this->taskService->createTask($request->all()), Response::HTTP_CREATED);
         }
 
+        /**
+         * @param Request $request
+         * @param $id
+         * @return Response|ResponseFactory
+         */
+        public function update(Request $request, $id)
+        {
+            return $this->successResponse($this->taskService->updateTask($request->all(), $id));
+        }
+
     }

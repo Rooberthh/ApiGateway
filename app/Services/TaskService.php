@@ -27,4 +27,9 @@
             return $this->performRequest('POST', "/api/tasks", $data);
         }
 
+        public function updateTask($data, $task)
+        {
+            return $this->performRequest('PATCH', "/api/tasks/${task}", $data);
+        }
+
     }
