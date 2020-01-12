@@ -57,6 +57,11 @@
             return $this->performRequest('DELETE', "/api/statuses/{$status}");
         }
 
+        public function getObjectives($task)
+        {
+            return $this->performRequest('GET', "/api/tasks/${task}/objectives");
+        }
+
         public function createObjective($data, $task)
         {
             return $this->performRequest('POST', "/api/tasks/${task}/objectives", $data);

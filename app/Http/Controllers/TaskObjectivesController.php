@@ -26,6 +26,11 @@
             $this->taskService = $service;
         }
 
+        public function index($task)
+        {
+            return $this->successResponse($this->taskService->getObjectives($task));
+        }
+
         /**
          * @param $task
          * @param Request $request

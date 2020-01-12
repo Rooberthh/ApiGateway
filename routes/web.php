@@ -46,6 +46,7 @@ $router->post('statuses',  ['uses' => 'StatusesController@store']);
 $router->patch('statuses/{id}',  ['uses' => 'StatusesController@update']);
 $router->delete('statuses/{id}',  ['uses' => 'StatusesController@destroy']);
 
+$router->get('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@index']);
 $router->post('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@store']);
 $router->patch('tasks/{task}/objectives/{objective}',  ['uses' => 'TaskObjectivesController@update']);
 $router->delete('tasks/{task}/objectives/{objective}',  ['uses' => 'TaskObjectivesController@destroy']);
