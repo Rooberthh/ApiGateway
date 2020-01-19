@@ -31,7 +31,9 @@ $router->get('events',  ['uses' => 'CalendarController@index']);
 $router->post('events',  ['uses' => 'CalendarController@store']);
 $router->delete('events/{id}',  ['uses' => 'CalendarController@destroy']);
 $router->patch('events/{id}',  ['uses' => 'CalendarController@update']);
+
 $router->get('events/frequent',  ['uses' => 'FrequentEventsController@index']);
+$router->get('events/top',  ['uses' => 'TopEventsController@index']);
 
 /*
     TaskService

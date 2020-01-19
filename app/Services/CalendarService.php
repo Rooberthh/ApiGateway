@@ -45,4 +45,9 @@
             return $this->performRequest('GET', '/api/events/frequent');
         }
 
+        public function getTopWeeklyEvents()
+        {
+            return $this->performRequest('GET', '/api/events/top');
+        }
+
     }
