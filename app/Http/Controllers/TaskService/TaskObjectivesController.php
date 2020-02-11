@@ -1,7 +1,7 @@
 <?php
 
 
-    namespace App\Http\Controllers;
+    namespace App\Http\Controllers\TaskService;
 
 
     use App\Services\TaskService;
@@ -9,6 +9,7 @@
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
     use Laravel\Lumen\Http\ResponseFactory;
+    use App\Http\Controllers\Controller;
 
     class TaskObjectivesController extends Controller
     {

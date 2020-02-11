@@ -77,4 +77,24 @@
             return $this->performRequest('DELETE', "/api/tasks/${task}/objectives/${objective}");
         }
 
+        public function getBoards()
+        {
+            return $this->performRequest('GET', '/api/boards');
+        }
+
+        public function createBoard($data)
+        {
+            return $this->performRequest('POST', "/api/boards", $data);
+        }
+
+        public function updateBoard($data, $board)
+        {
+            return $this->performRequest('PATCH', "/api/boards/${board}", $data);
+        }
+
+        public function deleteBoard($board)
+        {
+            return $this->performRequest('DELETE', "/api/boards/${board}");
+        }
+
     }

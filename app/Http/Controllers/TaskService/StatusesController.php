@@ -1,15 +1,17 @@
 <?php
 
-    namespace App\Http\Controllers;
 
-    use App\Services\BookService;
+    namespace App\Http\Controllers\TaskService;
+
+
     use App\Services\TaskService;
     use App\Traits\ApiResponse;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
     use Laravel\Lumen\Http\ResponseFactory;
+    use App\Http\Controllers\Controller;
 
-    class TasksController extends Controller
+    class StatusesController extends Controller
     {
         use ApiResponse;
 
@@ -27,7 +29,7 @@
 
         public function index()
         {
-            return $this->successResponse($this->taskService->getTasks());
+            return $this->successResponse($this->taskService->getStatuses());
         }
 
         /**
@@ -36,7 +38,7 @@
          */
         public function store(Request $request)
         {
-            return $this->successResponse($this->taskService->createTask($request->all()), Response::HTTP_CREATED);
+            return $this->successResponse($this->taskService->createStatus($request->all()), Response::HTTP_CREATED);
         }
 
         /**
@@ -46,7 +48,7 @@
          */
         public function update(Request $request, $id)
         {
-            return $this->successResponse($this->taskService->updateTask($request->all(), $id));
+            return $this->successResponse($this->taskService->updateStatus($request->all(), $id));
         }
 
         /**
@@ -55,7 +57,7 @@
          */
         public function destroy($id)
         {
-            return $this->successResponse($this->taskService->deleteTask($id));
+            return $this->successResponse($this->taskService->deleteStatus($id));
         }
 
     }

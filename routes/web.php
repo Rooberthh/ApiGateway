@@ -38,6 +38,29 @@ $router->get('events/top',  ['uses' => 'TopEventsController@index']);
 /*
     TaskService
 */
+$router->group(['namespace' => 'TaskService'], function() use ($router)
+{
+    $router->get('tasks',  ['uses' => 'TasksController@index']);
+    $router->post('tasks',  ['uses' => 'TasksController@store']);
+    $router->patch('tasks/{id}',  ['uses' => 'TasksController@update']);
+    $router->delete('tasks/{id}',  ['uses' => 'TasksController@destroy']);
+
+    $router->get('boards',  ['uses' => 'BoardsController@index']);
+    $router->post('boards',  ['uses' => 'BoardsController@store']);
+    $router->patch('boards/{id}',  ['uses' => 'BoardsController@update']);
+    $router->delete('boards/{id}',  ['uses' => 'BoardsController@destroy']);
+
+    $router->get('boards/{board}/statuses',  ['uses' => 'StatusesController@index']);
+    $router->post('boards/{board}/statuses',  ['uses' => 'StatusesController@store']);
+    $router->patch('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@update']);
+    $router->delete('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@destroy']);
+
+    $router->get('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@index']);
+    $router->post('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@store']);
+    $router->patch('tasks/{task}/objectives/{objective}',  ['uses' => 'TaskObjectivesController@update']);
+    $router->delete('tasks/{task}/objectives/{objective}',  ['uses' => 'TaskObjectivesController@destroy']);
+});
+    /*
 $router->get('tasks',  ['uses' => 'TasksController@index']);
 $router->post('tasks',  ['uses' => 'TasksController@store']);
 $router->patch('tasks/{id}',  ['uses' => 'TasksController@update']);
@@ -52,4 +75,5 @@ $router->get('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@in
 $router->post('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@store']);
 $router->patch('tasks/{task}/objectives/{objective}',  ['uses' => 'TaskObjectivesController@update']);
 $router->delete('tasks/{task}/objectives/{objective}',  ['uses' => 'TaskObjectivesController@destroy']);
+    */
 
