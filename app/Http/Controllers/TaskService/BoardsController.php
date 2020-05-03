@@ -32,6 +32,11 @@
             return $this->successResponse($this->taskService->getBoards());
         }
 
+        public function show($id)
+        {
+            return $this->successResponse($this->taskService->getBoard($id));
+        }
+
         /**
          * @param Request $request
          * @return Response|ResponseFactory

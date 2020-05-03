@@ -27,37 +27,40 @@
             $this->taskService = $service;
         }
 
-        public function index()
+        public function index($board)
         {
-            return $this->successResponse($this->taskService->getStatuses());
+            return $this->successResponse($this->taskService->getStatuses($board));
         }
 
         /**
+         * @param $board
          * @param Request $request
          * @return Response|ResponseFactory
          */
-        public function store(Request $request)
+        public function store($board, Request $request)
         {
-            return $this->successResponse($this->taskService->createStatus($request->all()), Response::HTTP_CREATED);
+            return $this->successResponse($this->taskService->createStatus($board, $request->all()), Response::HTTP_CREATED);
         }
 
         /**
+         * @param $board
          * @param Request $request
          * @param $id
          * @return Response|ResponseFactory
          */
-        public function update(Request $request, $id)
+        public function update($board, Request $request, $id)
         {
-            return $this->successResponse($this->taskService->updateStatus($request->all(), $id));
+            return $this->successResponse($this->taskService->updateStatus($board, $request->all(), $id));
         }
 
         /**
+         * @param $board
          * @param $id
          * @return Response|ResponseFactory
          */
-        public function destroy($id)
+        public function destroy($board, $id)
         {
-            return $this->successResponse($this->taskService->deleteStatus($id));
+            return $this->successResponse($this->taskService->deleteStatus($board, $id));
         }
 
     }

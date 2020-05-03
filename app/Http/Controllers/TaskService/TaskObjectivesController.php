@@ -8,7 +8,6 @@
     use App\Traits\ApiResponse;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
-    use Laravel\Lumen\Http\ResponseFactory;
     use App\Http\Controllers\Controller;
 
     class TaskObjectivesController extends Controller
@@ -33,30 +32,34 @@
         }
 
         /**
+         * @param $board
+         * @param $status
          * @param $task
          * @param Request $request
-         * @return Response|ResponseFactory
          */
         public function store($task, Request $request)
         {
-            return $this->successResponse($this->taskService->createObjective($request->all(), $task), Response::HTTP_CREATED);
+            return $this->successResponse($this->taskService->createObjective($task, $request->all()), Response::HTTP_CREATED);
         }
 
         /**
+         * @param $board
+         * @param $status
          * @param $task
          * @param $objective
          * @param Request $request
-         * @return Response|ResponseFactory
+         * @return Response|\Laravel\Lumen\Http\ResponseFactory
          */
-        public function update($task, $objective, Request $request)
+        public function update(Request $request, $task, $objective)
         {
-            return $this->successResponse($this->taskService->updateObjective($request->all(), $task, $objective));
+            return $this->successResponse($this->taskService->updateObjective($task, $objective, $request->all()));
         }
 
         /**
+         * @param $board
+         * @param $status
          * @param $task
          * @param $objective
-         * @return Response|ResponseFactory
          */
         public function destroy($task, $objective)
         {

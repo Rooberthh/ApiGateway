@@ -35,9 +35,9 @@
          * @param Request $request
          * @return Response|ResponseFactory
          */
-        public function store(Request $request)
+        public function store($status, Request $request)
         {
-            return $this->successResponse($this->taskService->createTask($request->all()), Response::HTTP_CREATED);
+            return $this->successResponse($this->taskService->createTask($status, $request->all()), Response::HTTP_CREATED);
         }
 
         /**
@@ -45,18 +45,18 @@
          * @param $id
          * @return Response|ResponseFactory
          */
-        public function update(Request $request, $id)
+        public function update($status, Request $request, $task)
         {
-            return $this->successResponse($this->taskService->updateTask($request->all(), $id));
+            return $this->successResponse($this->taskService->updateTask($status, $task, $request->all()));
         }
 
         /**
          * @param $id
          * @return Response|ResponseFactory
          */
-        public function destroy($id)
+        public function destroy($status, $id)
         {
-            return $this->successResponse($this->taskService->deleteTask($id));
+            return $this->successResponse($this->taskService->deleteTask($status, $id));
         }
 
     }
