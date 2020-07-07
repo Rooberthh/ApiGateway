@@ -17,7 +17,6 @@
          */
         public function handle($request, Closure $next)
         {
-
             $whitelist = config('access.whitelist');
 
             $ipAddresses = explode(';', $whitelist);

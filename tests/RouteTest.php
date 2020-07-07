@@ -11,6 +11,7 @@ class RouteTest extends TestCase
      * @test
      * @return void
      */
+    /*
     public function it_can_add_routes_test()
     {
         $router = app()->make('router');
@@ -39,6 +40,11 @@ class RouteTest extends TestCase
         dd($routes);
 
         $this->get($getRoutes[0]['uri'])->assertResponseStatus(200);
+    }
+    */
+
+    function it_filters_requests_based_on_ip(){
+        $this->get('/')->assertResponseStatus(200);
     }
 }
 

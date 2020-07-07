@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+    use App\Http\Middleware\WhitelistMiddleware;
+
+    require_once __DIR__.'/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
     dirname(__DIR__)
@@ -25,6 +27,7 @@ $app->withFacades();
 $app->withEloquent();
 
 $app->configure('services');
+$app->configure('access');
 
 /*
 |--------------------------------------------------------------------------
@@ -60,12 +63,11 @@ $app->singleton(
 
  $app->middleware([
      App\Http\Middleware\Cors::class,
-     App\Http\Middleware\WhitelistMiddleware::class
  ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+ $app->routeMiddleware([
+     'whitelist' => App\Http\Middleware\WhitelistMiddleware::class
+ ]);
 
 /*
 |--------------------------------------------------------------------------

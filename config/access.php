@@ -1,4 +1,4 @@
 <?php
-return [
-    'whitelist' => env('APP_WHITELIST')
-];
+    return [
+        'whitelist' => env('APP_WHITELIST')
+    ];
