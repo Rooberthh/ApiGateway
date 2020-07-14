@@ -24,7 +24,7 @@
             if (! in_array($request->ip(), $ipAddresses)) {
                 return new Response('Unauthorized Access', 403);
             }
-
+            
             return $next($request);
         }
     }
