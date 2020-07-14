@@ -28,6 +28,7 @@ $app->withEloquent();
 
 $app->configure('services');
 $app->configure('access');
+$app->configure('api');
 
 /*
 |--------------------------------------------------------------------------

@@ -14,6 +14,7 @@
         {
             $client = new Client([
                 'base_uri' => $this->baseUri,
+                'headers' => ['X-api-key' => config('api.key')]
             ]);
 
             $response = $client->request($method, $requestUrl, [
@@ -28,6 +29,7 @@
         {
             $client = new Client([
                 'base_uri' => $this->baseUri,
+                'headers' => ['X-api-key' => config('api.key')]
             ]);
             $multipart = [];
 
