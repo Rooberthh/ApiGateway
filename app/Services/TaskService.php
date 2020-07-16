@@ -57,6 +57,11 @@
             return $this->performRequest('PATCH', "/api/boards/${board}/statuses/${status}", $data);
         }
 
+        public function updateOrderOfStatuses($board, $data)
+        {
+            return $this->performRequest('PATCH', "/api/boards/${board}/statuses/", $data);
+        }
+
         public function deleteStatus($board, $status)
         {
             return $this->performRequest('DELETE', "/api/boards/${board}/statuses/${status}");

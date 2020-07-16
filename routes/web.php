@@ -47,6 +47,7 @@ $router->group(['middleware' => 'whitelist'], function() use ($router){
         $router->delete('boards/{id}',  ['uses' => 'BoardsController@destroy']);
 
         $router->get('boards/{board}/statuses',  ['uses' => 'StatusesController@index']);
+        $router->patch('boards/{board}/statuses',  ['uses' => 'StatusesController@updateOrderAll']);
         $router->post('boards/{board}/statuses',  ['uses' => 'StatusesController@store']);
         $router->patch('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@update']);
         $router->delete('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@destroy']);

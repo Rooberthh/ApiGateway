@@ -53,6 +53,11 @@
             return $this->successResponse($this->taskService->updateStatus($board, $request->all(), $id));
         }
 
+        public function updateOrderAll($board, Request $request)
+        {
+            return $this->successResponse($this->taskService->updateOrderOfStatuses($board, $request->all()));
+        }
+
         /**
          * @param $board
          * @param $id

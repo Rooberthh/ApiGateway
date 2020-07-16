@@ -17,6 +17,10 @@
          */
         public function handle($request, Closure $next)
         {
+            if(!app()->environment('production')) {
+                return $next($request);
+            }
+
             $whitelist = config('access.whitelist');
 
             $ipAddresses = explode(';', $whitelist);
