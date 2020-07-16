@@ -50,6 +50,11 @@
             return $this->successResponse($this->taskService->updateTask($status, $task, $request->all()));
         }
 
+        public function updateOrderAll($status, Request $request)
+        {
+            return $this->successResponse($this->taskService->updateOrderOfTasks($status, $request->all()));
+        }
+
         /**
          * @param $id
          * @return Response|ResponseFactory

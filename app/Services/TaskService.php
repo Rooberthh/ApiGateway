@@ -82,6 +82,11 @@
             return $this->performRequest('PATCH', "/api/statuses/${status}/tasks/${task}", $data);
         }
 
+        public function updateOrderOfTasks($status, $data)
+        {
+            return $this->performRequest('PATCH', "/api/statuses/${status}/tasks/", $data);
+        }
+
         public function deleteTask($status, $task)
         {
             return $this->performRequest('DELETE', "/api/statuses/${status}/tasks/${task}");
