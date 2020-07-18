@@ -48,7 +48,7 @@
          * @param $id
          * @return Response|ResponseFactory
          */
-        public function update($board, Request $request, $id)
+        public function update($board, $id, Request $request)
         {
             return $this->successResponse($this->taskService->updateStatus($board, $request->all(), $id));
         }
