@@ -42,10 +42,11 @@
 
         /**
          * @param Request $request
+         * @param $status
          * @param $id
          * @return Response|ResponseFactory
          */
-        public function update($status, Request $request, $id)
+        public function update($status, $id, Request $request )
         {
             return $this->successResponse($this->taskService->updateTask($status, $id, $request->all()));
         }
