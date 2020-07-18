@@ -45,9 +45,9 @@
          * @param $id
          * @return Response|ResponseFactory
          */
-        public function update($status, Request $request, $task)
+        public function update($status, Request $request, $id)
         {
-            return $this->successResponse($this->taskService->updateTask($status, $task, $request->all()));
+            return $this->successResponse($this->taskService->updateTask($status, $id, $request->all()));
         }
 
         public function updateOrderAll($status, Request $request)
