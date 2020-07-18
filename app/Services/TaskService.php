@@ -47,6 +47,21 @@
             return $this->performRequest('GET', "/api/boards/${board}/statuses");
         }
 
+        public function getFavoriteStatuses()
+        {
+            return $this->performRequest('GET', '/api/statuses/favorites');
+        }
+
+        public function addFavoriteStatus($status)
+        {
+            return $this->performRequest('POST', "/api/statuses/${status}/favorite");
+        }
+
+        public function deleteFavoriteStatus($status)
+        {
+            return $this->performRequest('DELETE', "/api/statuses/${status}/favorite");
+        }
+
         public function createStatus($board, $data)
         {
             return $this->performRequest('POST', "/api/boards/${board}/statuses", $data);
