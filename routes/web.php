@@ -10,11 +10,14 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-$router->group(['middleware' => 'whitelist'], function() use ($router){
-    $router->get('/', function() {
-       return app()->version();
-    });
+$router->get('/', function() {
+    return app()->version();
+});
 
+$router->post('login',  ['uses' => 'AuthController@login']);
+$router->post('users',  ['uses' => 'UsersController@store']);
+
+$router->group(['middleware' => 'client.credentials'], function() use ($router){
     /*
         BookService
     */
@@ -66,6 +69,20 @@ $router->group(['middleware' => 'whitelist'], function() use ($router){
         $router->post('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@store']);
         $router->patch('tasks/{task}/objectives/{id}',  ['uses' => 'TaskObjectivesController@update']);
         $router->delete('tasks/{task}/objectives/{id}',  ['uses' => 'TaskObjectivesController@destroy']);
+    });
+
+    /*
+     * User Routes
+     */
+    $router->get('users',  ['uses' => 'UsersController@index']);
+    $router->delete('users/{user}',  ['uses' => 'UsersController@destroy']);
+    $router->patch('users/{user}',  ['uses' => 'UsersController@update']);
+
+    /*
+     * User Credentials
+     */
+    $router->group(['middleware' => 'auth:api'], function() use ($router){
+        $router->get('users/me',  ['uses' => 'UsersController@me']);
     });
 });
 

@@ -12,9 +12,12 @@
 
         public $baseUri;
 
+        public $secret;
+
         public function __construct()
         {
             $this->baseUri = config('services.task.base_uri');
+            $this->secret = config('services.task.secret');
         }
 
         public function getBoards()
