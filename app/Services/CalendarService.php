@@ -11,10 +11,12 @@
         use ConsumesExternalService;
 
         public $baseUri;
+        public $secret;
 
         public function __construct()
         {
             $this->baseUri = config('services.calendar.base_uri');
+            $this->secret = config('services.calendar.secret');
         }
 
         /**

@@ -1,6 +1,7 @@
 <?php
 
     use App\Http\Middleware\WhitelistMiddleware;
+    use App\Providers\AuthServiceProvider;
 
     require_once __DIR__.'/../vendor/autoload.php';
 
@@ -19,7 +20,7 @@
 |
 */
 
-$app = new Laravel\Lumen\Application(
+$app = new \Dusterio\LumenPassport\Lumen7Application(
     dirname(__DIR__)
 );
 
@@ -29,6 +30,7 @@ $app->withEloquent();
 $app->configure('services');
 $app->configure('access');
 $app->configure('api');
+$app->configure('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +69,9 @@ $app->singleton(
  ]);
 
  $app->routeMiddleware([
-     'whitelist' => App\Http\Middleware\WhitelistMiddleware::class
+     'whitelist' => App\Http\Middleware\WhitelistMiddleware::class,
+     'auth' => \App\Http\Middleware\Authenticate::class,
+     'client.credentials' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class
  ]);
 
 /*
@@ -81,8 +85,10 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+    $app->register(App\Providers\AppServiceProvider::class);
+    $app->register(App\Providers\AuthServiceProvider::class);
+    $app->register(Laravel\Passport\PassportServiceProvider::class);
+    $app->register(\Dusterio\LumenPassport\PassportServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*
@@ -95,6 +101,7 @@ $app->singleton(
 | can respond to, as well as the controllers that may handle them.
 |
 */
+\Dusterio\LumenPassport\LumenPassport::routes($app);
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
