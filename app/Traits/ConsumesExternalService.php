@@ -14,11 +14,15 @@
         {
             $client = new Client([
                 'base_uri' => $this->baseUri,
-                'headers' => ['auth' => config('api.key')]
             ]);
+
+            if(isset($this->secret)){
+                $headers['Authorization'] = $this->secret;
+            }
 
             $response = $client->request($method, $requestUrl, [
                 'form_params' => $formParams,
+                'headers' => $headers
             ]);
 
             return $response->getBody()->getContents();
