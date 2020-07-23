@@ -47,7 +47,7 @@
         public function store(Request $request)
         {
             User::find($request->user_id);
-            
+
             $request->merge([
                 'user_id' => $request->user()->id
             ]);
