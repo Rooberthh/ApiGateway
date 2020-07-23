@@ -78,7 +78,7 @@
                 'user_id' => $request->user()->id
             ]);
 
-            return $this->successResponse($this->taskService->deleteBoard($id));
+            return $this->successResponse($this->taskService->deleteBoard($id, $request->all()));
         }
 
     }

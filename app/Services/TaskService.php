@@ -43,9 +43,9 @@
             return $this->performRequest('PATCH', "/api/boards/${board}", $data);
         }
 
-        public function deleteBoard($board)
+        public function deleteBoard($board, $data)
         {
-            return $this->performRequest('DELETE', "/api/boards/${board}");
+            return $this->performRequest('DELETE', "/api/boards/${board}", $data);
         }
 
         public function getStatuses($board)
