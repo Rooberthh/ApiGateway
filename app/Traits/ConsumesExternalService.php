@@ -20,10 +20,20 @@
                 $headers['Authorization'] = $this->secret;
             }
 
-            $response = $client->request($method, $requestUrl, [
-                'form_params' => $formParams,
-                'headers' => $headers
-            ]);
+            $response = null;
+
+            if(strtoupper($method) === "GET") {
+                $response = $client->request($method, $requestUrl, [
+                    'query' => $formParams,
+                    'headers' => $headers
+                ]);
+            } else {
+                $response = $client->request($method, $requestUrl, [
+                    'form_params' => $formParams,
+                    'headers' => $headers
+                ]);
+            }
+
 
             return $response->getBody()->getContents();
         }

@@ -6,6 +6,7 @@
 
     use App\Services\TaskService;
     use App\Traits\ApiResponse;
+    use App\User;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
     use Laravel\Lumen\Http\ResponseFactory;
@@ -27,9 +28,11 @@
             $this->taskService = $service;
         }
 
-        public function index()
+        public function index(Request $request)
         {
-            return $this->successResponse($this->taskService->getBoards());
+            $id = ($request->user()->id) ? $request->user()->id : $request->get('user_id');
+
+            return  $this->taskService->getBoards($id);
         }
 
         public function show($id)
@@ -43,6 +46,8 @@
          */
         public function store(Request $request)
         {
+            User::find($request->user_id);
+
             return $this->successResponse($this->taskService->createBoard($request->all()), Response::HTTP_CREATED);
         }
 
@@ -53,15 +58,23 @@
          */
         public function update(Request $request, $id)
         {
-            return $this->successResponse($this->taskService->updateBoard($request->all(), $id));
+            $request->merge([
+                'user_id' => $request->user()->id
+            ]);
+            return $this->successResponse($this->taskService->updateBoard($request->all(), $id);
         }
 
         /**
+         * @param Request $request
          * @param $id
          * @return Response|ResponseFactory
          */
-        public function destroy($id)
+        public function destroy(Request $request, $id)
         {
+            $request->merge([
+                'user_id' => $request->user()->id
+            ]);
+
             return $this->successResponse($this->taskService->deleteBoard($id));
         }
 

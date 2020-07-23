@@ -20,9 +20,12 @@
             $this->secret = config('services.task.secret');
         }
 
-        public function getBoards()
+        public function getBoards($user)
         {
-            return $this->performRequest('GET', '/api/boards');
+            $params = [
+                'user_id' => $user
+            ];
+            return $this->performRequest('GET', '/api/boards', $params);
         }
 
         public function getBoard($id)
