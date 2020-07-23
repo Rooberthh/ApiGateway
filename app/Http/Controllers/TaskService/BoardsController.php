@@ -61,7 +61,7 @@
             $request->merge([
                 'user_id' => $request->user()->id
             ]);
-            return $this->successResponse($this->taskService->updateBoard($request->all(), $id);
+            return $this->successResponse($this->taskService->updateBoard($request->all(), $id));
         }
 
         /**
